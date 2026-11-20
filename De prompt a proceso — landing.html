@@ -1,0 +1,152 @@
+<!-- Documento HTML: el navegador usa esta declaración para interpretar la página con HTML5. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- CONFIGURACIÓN DE LA PÁGINA: scripts auxiliares, título, descripción, fuentes y estilos generales. -->
+<script>
+window.contextInfo = {"files":[],"materials":[],"crafts":[]};
+// Hace que los enlaces internos (por ejemplo, #descarga) se desplacen correctamente dentro de un iframe.
+document.addEventListener('click', function(e) {
+  var anchor = e.target.closest('a');
+  if (anchor) {
+    var href = anchor.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      var targetId = href.slice(1);
+      var target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+});
+</script>
+<!-- Datos que aparecen en la pestaña del navegador y ayudan a adaptar la página a cada pantalla. -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111721"><meta name="description" content="Una guía práctica gratuita para crear, importar y mejorar Skills en YouMind, con plantilla y lista de revisión."><title>De prompt a proceso — Guía de Skills para YouMind</title>
+<!-- Carga las tipografías de Google Fonts; si no están disponibles, el CSS utiliza fuentes alternativas. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Estilos generales: colores reutilizables, tipografía, botones, espacios y adaptación a móviles. -->
+<style>
+:root{--ink:#111721;--purple:#6d28d9;--violet-light:#a78bfa;--white:#fff;--surface:#f7f5fb;--lavender:#eeeaf8;--muted:#525c6c;--border:#e4e6eb;--mono:'JetBrains Mono',monospace;--sans:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit}button,input{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #9a72ed;outline-offset:4px}h1,h2,h3,p{margin-top:0}h1,h2,h3{letter-spacing:-.045em}h2{font-size:clamp(2rem,3.8vw,3.7rem);line-height:1.1}p{line-height:1.75}.container{width:min(1240px,calc(100% - 64px));margin-inline:auto}.section{padding:112px 0}.eyebrow,.section-label,.mono{font:600 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase}.section-label{color:#6941bf;margin:0 0 24px}.section-head{display:grid;grid-template-columns:1fr 1.1fr;gap:40px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:56px;padding:0 23px;border:1px solid transparent;border-radius:4px;background:var(--purple);color:white;text-decoration:none;font-weight:700;font-size:14px;transition:background .18s,transform .18s}.btn:hover{background:#5720ad;transform:translateY(-2px)}.btn-arrow{font-size:20px;line-height:1}.fine{font-size:12px;color:var(--muted)}.skip{position:absolute;top:-100px;left:16px;z-index:20;background:white;color:var(--ink);padding:12px}.skip:focus{top:12px}@media(max-width:800px){.container{width:min(100% - 40px,1240px)}.section{padding:80px 0}.section-head{grid-template-columns:1fr;gap:0}}@media(max-width:400px){.container{width:calc(100% - 32px)}.section{padding:64px 0}.btn{width:100%}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<!-- CUERPO VISIBLE: todo lo que aparece en la página está dentro de body. -->
+<body><a class="skip" href="#contenido">Saltar al contenido</a>
+<!-- Estilos específicos del encabezado y de la portada principal. -->
+<style>
+/* Header + hero */
+.site-header{border-bottom:1px solid var(--border);background:#fff}.header-inner{width:min(1320px,calc(100% - 64px));height:82px;margin:auto;display:flex;align-items:center;justify-content:space-between}.brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none}.brand-mark{width:38px;height:38px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;letter-spacing:-.08em}.brand-name{font-size:11px;font-weight:800;letter-spacing:.11em}.header-link{font-size:13px;font-weight:600;text-decoration:none}.header-link:hover{color:var(--purple)}.hero{padding:94px 0 105px;background:#fff}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}.hero-copy{max-width:620px}.hero .eyebrow{display:flex;align-items:center;gap:10px;color:#6531bc;margin:0 0 29px}.hero .eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--purple)}.hero h1{font-size:clamp(3.5rem,6.5vw,6.7rem);line-height:.98;margin:0 0 25px;font-weight:800;max-width:650px}.hero-subtitle{font-size:clamp(1.17rem,2vw,1.6rem);line-height:1.38;letter-spacing:-.035em;font-weight:600;max-width:530px;margin:0 0 18px}.hero-description{color:var(--muted);font-size:16px;line-height:1.75;max-width:520px;margin-bottom:30px}.hero .fine{margin:17px 0 0}.cover-wrap{position:relative;padding:16px 22px 25px 0;max-width:505px;margin-left:auto;width:100%}.cover-wrap:after{content:'';position:absolute;inset:31px 0 0 16px;border:1px solid #c9c4d3;z-index:0}.cover{position:relative;z-index:1;overflow:hidden;background:var(--ink);color:white;aspect-ratio: .86;padding:30px 34px;display:flex;flex-direction:column;justify-content:space-between}.cover:before,.cover:after{content:'';position:absolute;border:1px solid rgba(167,139,250,.33);border-radius:50%;width:74%;aspect-ratio:1;right:-31%;top:17%}.cover:after{width:60%;right:-24%;top:23%;border-color:rgba(167,139,250,.18)}.cover-top,.cover-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.cover-top{color:#c9c5d4}.cover-kicker{color:#b7a2f5;margin:0 0 19px}.cover-title{position:relative;z-index:1;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:800;line-height:1;letter-spacing:-.06em;max-width:330px;margin:0}.cover-line{width:41px;height:3px;background:var(--violet-light);margin-top:27px}.cover-bottom{border-top:1px solid #50535e;padding-top:20px;color:#d6d3de}.cover-bottom .cover-strap{max-width:190px;line-height:1.6}.cover-note{color:#918b9e;text-align:right}.hero-caption{font:500 10px var(--mono);letter-spacing:.09em;color:#777383;text-align:right;margin:15px 24px 0 0}.hero-caption span{color:var(--purple)}@media(max-width:800px){.header-inner{width:calc(100% - 40px);height:72px}.hero{padding:72px 0 78px}.hero-grid{grid-template-columns:1fr;gap:48px}.cover-wrap{margin:0 auto;max-width:500px}.hero h1{max-width:640px}.hero-description{max-width:600px}}@media(max-width:400px){.header-inner{width:calc(100% - 32px)}.hero{padding:56px 0 64px}.hero h1{font-size:3.35rem}.cover{padding:24px}.cover-title{font-size:2.7rem}.cover-bottom{gap:5px}.cover-bottom .mono{font-size:9px}}
+</style>
+<!-- Encabezado: marca personal y enlace que lleva a la sección de la guía. -->
+<header class="site-header"><div class="header-inner"><a class="brand" href="#inicio" aria-label="Simón Díaz, inicio"><span class="brand-mark">SD</span><span class="brand-name">SIMÓN DÍAZ</span></a><a class="header-link" href="#contenido-guia">Conoce la guía <span aria-hidden="true">↗</span></a></div></header>
+<!-- Portada: presentación principal, textos promocionales, botón y maqueta visual de la guía. -->
+<section class="hero" id="inicio" aria-labelledby="hero-title"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow">RECURSO GRATUITO · YOUMIND</p><h1 id="hero-title">De prompt<br>a proceso<span style="color:var(--purple)">.</span></h1><p class="hero-subtitle">Convierte una buena instrucción en una Skill que puedas volver a usar.</p><p class="hero-description">Una guía práctica para crear, importar y mejorar Skills en YouMind, con pasos claros y ejemplos para empezar.</p><a href="#descarga" class="btn">Quiero la guía <span class="btn-arrow" aria-hidden="true">↗</span></a><p class="fine">Gratis · Acceso inmediato · En formato Markdown</p></div><div class="cover-wrap"><div class="cover" aria-label="Portada editorial de De prompt a proceso, recurso de Simón Díaz"><div class="cover-top mono"><span>SD / RECURSOS</span><span>01—08</span></div><div><p class="cover-kicker mono">YOUMIND</p><p class="cover-title">De prompt<br>a proceso.</p><div class="cover-line"></div></div><div class="cover-bottom"><span class="cover-strap mono">UNA GUÍA PARA HACER REUTILIZABLES TUS MÉTODOS</span><span class="cover-note mono">POR<br>SIMÓN DÍAZ</span></div></div><p class="hero-caption"><span>●</span> GUÍA PRÁCTICA &nbsp; / &nbsp; FORMATO .MD</p></div></div></section>
+<!-- CONTENIDO PRINCIPAL: punto de partida, beneficios, índice, muestra, descarga y preguntas frecuentes. -->
+<main id="contenido">
+<!-- Estilos propios de las secciones 01 y 02: introducción y tarjetas de beneficios. -->
+<style>
+/* Punto de partida + beneficios */
+.start-section{border-top:1px solid var(--border)}.start-layout{display:grid;grid-template-columns:1fr 1.05fr;gap:100px;align-items:start}.start-layout h2{max-width:630px;margin-bottom:0}.start-right{padding-top:38px}.start-right p{font-size:18px;color:var(--muted);max-width:510px}.start-marker{display:flex;align-items:center;gap:13px;margin-top:42px;color:#777080}.start-marker:before{content:'';height:1px;width:45px;background:var(--purple)}.benefits{background:var(--surface)}.benefits-heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:40px}.benefits-heading h2{font-size:clamp(2rem,3.3vw,3.3rem);margin:0}.benefits-note{font:500 11px var(--mono);color:#787185;text-transform:uppercase;letter-spacing:.09em;margin:0 0 8px}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.benefit-card{background:#fff;border:1px solid #ebe8f0;min-height:275px;padding:29px 29px 31px;position:relative;transition:transform .18s,border-color .18s}.benefit-card:hover{transform:translateY(-3px);border-color:#bba8e4}.benefit-card:before{content:'';position:absolute;left:0;top:30px;bottom:30px;width:3px;background:var(--purple)}.benefit-number{font:600 12px var(--mono);color:#7043bd;margin-bottom:58px}.benefit-card h3{font-size:20px;margin:0 0 12px}.benefit-card p{font-size:14px;line-height:1.7;color:var(--muted);margin:0}@media(max-width:800px){.start-layout{grid-template-columns:1fr;gap:12px}.start-right{padding-top:16px}.benefit-grid{grid-template-columns:1fr}.benefit-card{min-height:auto}.benefit-number{margin-bottom:32px}.benefits-heading{align-items:start;flex-direction:column}.benefits-note{margin:0}}
+</style>
+<!-- Sección 01: explica el problema que resuelve la guía. Edita aquí el título y el párrafo. -->
+<section class="section start-section" aria-labelledby="start-title"><div class="container"><p class="section-label">01 / EL PUNTO DE PARTIDA</p><div class="start-layout"><h2 id="start-title">¿Te salió bien una vez y tuviste que empezar de nuevo?</h2><div class="start-right"><p>Una Skill convierte un método en un flujo que puedes reutilizar. En esta guía vas a ordenar las instrucciones, materiales y criterios que hacen que ese proceso funcione.</p><div class="start-marker mono">DE UNA INSTRUCCIÓN A UN MÉTODO</div></div></div></div></section>
+<!-- Sección 02: tarjetas con los tres objetivos de aprendizaje. -->
+<section class="section benefits" aria-labelledby="benefits-title"><div class="container"><p class="section-label">02 / QUÉ VAS A APRENDER</p><div class="benefits-heading"><h2 id="benefits-title">Del punto de partida<br>a una Skill reutilizable.</h2><p class="benefits-note">UNA GUÍA · TRES OBJETIVOS</p></div><div class="benefit-grid"><article class="benefit-card"><div class="benefit-number">01 /</div><h3>Elegir cómo empezar</h3><p>Crea con ayuda de YouMind, escribe desde cero o parte de un archivo o Skill existente.</p></article><article class="benefit-card"><div class="benefit-number">02 /</div><h3>Diseñar un proceso claro</h3><p>Define objetivo, entradas, pasos, formato de entrega y qué hacer si falta información.</p></article><article class="benefit-card"><div class="benefit-number">03 /</div><h3>Probar y mejorar</h3><p>Evalúa tu Skill con casos normales, incompletos y distintos antes de compartirla.</p></article></div></div></section>
+<!-- Estilos propios de las secciones 03 y 04: índice, diagrama y vista previa. -->
+<style>
+/* Contenido de la guía + vista previa */
+.contents{background:var(--lavender)}.contents-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:92px}.contents h2{margin:0 0 20px;max-width:500px}.contents-intro{color:var(--muted);max-width:450px}.flow-diagram{margin-top:44px;background:#fff;border:1px solid #ded8ea;padding:23px}.flow-label{color:#746b83;margin-bottom:14px}.flow-diagram svg{display:block;width:100%;height:auto}.content-list{margin:0;padding:0;list-style:none;border-top:1px solid #d2cadd}.content-list li{display:flex;align-items:center;gap:20px;padding:22px 0;border-bottom:1px solid #d2cadd;font-size:16px;font-weight:600;line-height:1.45}.content-list li span{font:500 11px var(--mono);color:#7655b0;flex:0 0 27px}.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:center}.preview-copy h2{margin:0 0 22px}.preview-copy>p:not(.section-label):not(.eyebrow){color:var(--muted);max-width:480px}.preview-copy .eyebrow{color:#7752b8;margin:34px 0 16px}.btn-outline{background:transparent;color:var(--ink);border-color:#bfc2c9;margin-top:17px}.btn-outline:hover{background:var(--ink);border-color:var(--ink);color:#fff}.paper-frame{background:#f2eff7;border:1px solid #e6e1ee;padding:38px}.paper{background:#fff;border:1px solid #e6e5e9;padding:32px 36px 34px;box-shadow:0 10px 30px rgba(17,23,33,.05)}.paper-top{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:28px;color:#7b7486}.paper h3{font-size:22px;line-height:1.2;margin-bottom:9px}.paper-intro{font-size:11px;line-height:1.6;color:var(--muted);margin-bottom:25px}.template{margin:0;font:500 11px/1.75 var(--mono);white-space:pre-wrap;color:#303743;overflow-wrap:anywhere}.template-caption{font:500 10px/1.5 var(--mono);color:#766e80;letter-spacing:.04em;margin:18px 0 0}@media(max-width:800px){.contents-grid,.preview-grid{grid-template-columns:1fr;gap:42px}.preview-grid .paper-frame{order:2}.flow-diagram{max-width:560px}.preview-copy h2{max-width:600px}.paper-frame{padding:24px}}@media(max-width:400px){.paper-frame{padding:14px}.paper{padding:24px 20px}.content-list li{font-size:15px}}
+</style>
+<!-- Sección 03: resumen visual y lista de los temas incluidos en la guía. -->
+<section class="section contents" id="contenido-guia" aria-labelledby="contents-title"><div class="container"><p class="section-label">03 / DENTRO DE LA GUÍA</p><div class="contents-grid"><div><h2 id="contents-title">Un método práctico, paso a paso.</h2><p class="contents-intro">No necesitas encontrar el prompt perfecto. Empieza por entender la tarea y hacer explícito el método.</p><div class="flow-diagram"><p class="flow-label mono">EL MÉTODO / EN SÍNTESIS</p><svg viewBox="0 0 500 90" role="img" aria-labelledby="diagram-title diagram-desc"><title id="diagram-title">De una tarea a una Skill reutilizable</title><desc id="diagram-desc">Secuencia de tres pasos: definir la tarea, ordenar el proceso y probar la Skill.</desc><rect x="1" y="10" width="143" height="59" fill="#f7f5fb" stroke="#d9d3e6"/><rect x="178" y="10" width="143" height="59" fill="#f7f5fb" stroke="#d9d3e6"/><rect x="355" y="10" width="143" height="59" fill="#111721"/><path d="M144 39h29m-7-5 7 5-7 5M321 39h29m-7-5 7 5-7 5" fill="none" stroke="#7953c0" stroke-width="1.5"/><text x="72" y="35" text-anchor="middle" fill="#6d28d9" font-family="monospace" font-size="10">01 / DEFINIR</text><text x="72" y="53" text-anchor="middle" fill="#111721" font-family="sans-serif" font-size="12" font-weight="600">La tarea</text><text x="249" y="35" text-anchor="middle" fill="#6d28d9" font-family="monospace" font-size="10">02 / ORDENAR</text><text x="249" y="53" text-anchor="middle" fill="#111721" font-family="sans-serif" font-size="12" font-weight="600">El proceso</text><text x="426" y="35" text-anchor="middle" fill="#bca6fb" font-family="monospace" font-size="10">03 / PROBAR</text><text x="426" y="53" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="12" font-weight="600">La Skill</text></svg></div></div><ol class="content-list"><li><span>01</span>Qué es una Skill y cuándo usarla</li><li><span>02</span>Cuatro formas de empezar en YouMind</li><li><span>03</span>Plantilla para diseñar tu Skill</li><li><span>04</span>Ejemplo: de un video a ideas de contenido</li><li><span>05</span>Pruebas, errores y lista de revisión</li></ol></div></div></section>
+<!-- Sección 04: muestra una página de la guía y ofrece otro enlace a la descarga. -->
+<section class="section preview" aria-labelledby="preview-title"><div class="container preview-grid"><div class="paper-frame"><div class="paper"><div class="paper-top mono"><span>DE PROMPT A PROCESO</span><span>03 / 08</span></div><h3>Una plantilla para diseñar tu Skill</h3><p class="paper-intro">Puedes usar esta estructura como borrador antes de crearla en YouMind. Adáptala al formato que te pida la herramienta:</p><pre class="template">Nombre:
+
+Problema que resuelve:
+
+Quién la va a usar:
+
+Información que debe proporcionar:
+
+Pasos que debe seguir:
+1.
+2.
+3.
+
+Formato del resultado:
+
+Criterios de calidad:
+
+Qué hacer si falta información:
+
+Ejemplo de una buena entrega:</pre></div><p class="template-caption">VISTA PREVIA · EXTRACTO REAL DE LA GUÍA</p></div><div class="preview-copy"><p class="section-label">04 / UNA PÁGINA DE LA GUÍA</p><p class="eyebrow">UNA HERRAMIENTA PARA EMPEZAR</p><h2 id="preview-title">Una estructura que puedes adaptar a tu tarea.</h2><p>La guía incluye una plantilla para ordenar qué resuelve tu Skill, qué información necesita y qué resultado debería entregar.</p><a class="btn btn-outline" href="#descarga">Descargar la guía <span class="btn-arrow" aria-hidden="true">↗</span></a></div></div></section>
+<!-- Estilos propios de las secciones de descarga y preguntas frecuentes. -->
+<style>
+/* Conversión y FAQ */
+.download{background:var(--ink);color:#fff}.download-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:110px}.download .eyebrow{color:#c4b5fd;margin-bottom:23px}.download h2{max-width:650px;margin:0 0 20px}.download-description{color:#c8cbd3;max-width:600px;margin:0 0 33px}.integration-notice{max-width:630px;background:#242535;border-left:3px solid #bda9f6;padding:15px 17px;font-size:13px;line-height:1.6;color:#f0ebff;margin:0 0 25px}.download-form{max-width:660px}.download-form label{display:block;font-size:13px;font-weight:600;margin-bottom:11px}.form-row{display:flex;gap:10px}.form-row input{min-width:0;flex:1;min-height:56px;padding:0 16px;border:1px solid #c9cbd2;border-radius:3px;color:var(--ink);background:#fff}.form-row input::placeholder{color:#717786}.form-row button{white-space:nowrap}.form-row button:disabled{opacity:.65;cursor:wait}.form-fieldset{border:0;padding:0;margin:0}.form-error{color:#ffd0cc;font-size:13px;line-height:1.5;min-height:1.5em;margin:9px 0 0}.form-hint{color:#b1b6c2;font-size:12px;line-height:1.7;margin:9px 0 0}.meta-panel{border-top:1px solid #4a4f5b}.meta-row{padding:22px 0;border-bottom:1px solid #4a4f5b}.meta-row dt{font:600 10px var(--mono);letter-spacing:.11em;color:#b8a8e0;margin-bottom:8px}.meta-row dd{font-size:15px;margin:0}.success-panel{border:1px solid #625b7b;padding:25px;max-width:660px}.success-icon{width:36px;height:36px;border:1px solid #c4b5fd;display:grid;place-items:center;color:#c4b5fd;margin-bottom:18px}.success-panel h3{font-size:23px;margin:0 0 8px}.success-panel p{color:#c8cbd3}.faq-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:85px}.faq-title{font-size:clamp(2rem,3vw,3rem);margin:0}.faq-items{border-top:1px solid var(--border)}details{border-bottom:1px solid var(--border)}summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:24px 0;font-size:16px;font-weight:700;cursor:pointer}summary::-webkit-details-marker{display:none}summary:after{content:'+';font-size:23px;font-weight:400;color:var(--purple)}details[open] summary:after{content:'−'}details p{color:var(--muted);font-size:14px;max-width:640px;margin:0 0 25px}@media(max-width:800px){.download-grid,.faq-grid{grid-template-columns:1fr;gap:48px}.meta-panel{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.meta-row{border-bottom:0}.faq-grid{gap:30px}}@media(max-width:550px){.form-row{flex-direction:column}.form-row .btn{width:100%}.meta-panel{grid-template-columns:1fr;gap:0}.meta-row{border-bottom:1px solid #4a4f5b}}
+</style>
+<!-- Sección de descarga: el formulario se activa solo al configurar la integración en CONFIG. -->
+<section class="section download" id="descarga" aria-labelledby="download-title"><div class="container download-grid"><div><p class="eyebrow">TU PRÓXIMO PROCESO EMPIEZA AQUÍ</p><h2 id="download-title">Haz que lo que funciona se repita.</h2><p class="download-description">Deja tu email para desbloquear la descarga inmediata. No recibirás un email automático.</p><p class="integration-notice" id="integration-notice"><strong>Registro y descarga aún no disponibles.</strong> Está pendiente configurar la integración que registra el correo y habilita el acceso a la guía.</p><form class="download-form" id="lead-form" method="post" novalidate><fieldset class="form-fieldset" id="form-fields" disabled><label for="email">Tu correo electrónico</label><div class="form-row"><input type="email" id="email" name="email" placeholder="nombre@correo.com" autocomplete="email" maxlength="254" required aria-describedby="form-error form-hint"><button class="btn" id="submit-button" type="submit">Obtener la guía <span class="btn-arrow" aria-hidden="true">↗</span></button></div></fieldset><p class="form-error" id="form-error" role="status" aria-live="polite"></p><p class="form-hint" id="form-hint">Tu correo se registra junto con esta solicitud para habilitar la descarga. No se activa ningún envío automático.</p><noscript><p class="form-hint">El formulario requiere JavaScript y una integración de registro configurada.</p></noscript></form><div class="success-panel" id="success-panel" hidden tabindex="-1" aria-live="polite"><div class="success-icon" aria-hidden="true">✓</div><h3>Listo. La guía ya es tuya.</h3><p>Descárgala y empieza por la plantilla de diseño.</p><a class="btn" id="download-link" download="de-prompt-a-proceso.md">Descargar guía <span class="btn-arrow" aria-hidden="true">↓</span></a></div></div><dl class="meta-panel"><div class="meta-row"><dt>FORMATO</dt><dd>Markdown (.md)</dd></div><div class="meta-row"><dt>CONTENIDO</dt><dd>Guía + plantilla + checklist</dd></div><div class="meta-row"><dt>ACCESO</dt><dd>Descarga inmediata</dd></div></dl></div></section>
+<!-- Preguntas frecuentes: cada bloque details/summary se puede abrir y cerrar al hacer clic. -->
+<section class="section faq" aria-labelledby="faq-title"><div class="container faq-grid"><div><p class="section-label">05 / PREGUNTAS FRECUENTES</p><h2 class="faq-title" id="faq-title">Para empezar<br>con claridad.</h2></div><div class="faq-items"><details><summary>¿Necesito experiencia previa con Skills?</summary><p>No. La guía empieza por explicar qué es una Skill y presenta varias formas de crear o importar una.</p></details><details><summary>¿Qué recibiré al completar el formulario?</summary><p>Acceso inmediato a la guía en Markdown, con una plantilla para diseñar Skills y una lista de revisión.</p></details><details><summary>¿La guía es un tutorial oficial de YouMind?</summary><p>No. Es un recurso educativo independiente creado por Simón Díaz. Las opciones del producto pueden cambiar con el tiempo.</p></details></div></div></section>
+<!-- Fin del contenido principal. -->
+</main>
+<!-- Estilos del pie de página, incluida su adaptación a pantallas pequeñas. -->
+<style>
+/* Footer */
+.site-footer{background:#f7f5fb;border-top:1px solid var(--border);padding:50px 0 28px}.footer-main{display:flex;justify-content:space-between;gap:30px;align-items:start;padding-bottom:42px}.footer-description{font-size:13px;color:var(--muted);max-width:335px;margin:15px 0 0}.footer-link{font-size:13px;font-weight:700;text-decoration:none;border-bottom:1px solid #8c69c9;padding-bottom:4px}.footer-link:hover{color:var(--purple)}.footer-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;gap:20px;color:#777d87;font:500 10px/1.5 var(--mono)}@media(max-width:550px){.footer-main,.footer-bottom{flex-direction:column}.footer-main{padding-bottom:30px}.footer-bottom{gap:6px}}
+</style>
+<!-- Pie de página: descripción, enlace externo, año y aviso de recurso independiente. -->
+<footer class="site-footer"><div class="container"><div class="footer-main"><div><a class="brand" href="#inicio" aria-label="Simón Díaz, volver al inicio"><span class="brand-mark">SD</span><span class="brand-name">SIMÓN DÍAZ</span></a><p class="footer-description">Marketing digital, creación de contenido e inteligencia artificial.</p></div><a class="footer-link" href="https://www.youtube.com/@simondiaz.marketingdigital" target="_blank" rel="noopener noreferrer">YouTube <span aria-hidden="true">↗</span></a></div><div class="footer-bottom"><span>© <span id="copyright-year">2026</span> SIMÓN DÍAZ</span><span>RECURSO EDUCATIVO INDEPENDIENTE</span></div></div></footer>
+<!-- JavaScript: actualiza el año y gestiona la activación, validación y respuesta del formulario. -->
+<script>
+/* CONFIGURACIÓN: añadir un endpoint HTTPS propio que registre el lead de forma persistente.
+   Contrato: POST JSON {email}; respuesta HTTP 2xx JSON {success:true,downloadUrl:"https://..."}.
+   El servidor debe devolver una URL segura para la guía real solo tras el registro confirmado.
+   El endpoint debe permitir solicitudes del origen donde se publique esta página y no activar emails.
+   Antes de activar: privacidad y cumplimiento legal, protección antiabuso, almacenamiento seguro,
+   control de acceso a la guía y validación del lado del servidor. */
+// Pega aquí la URL HTTPS de tu servicio de registro. Vacío mantiene el formulario desactivado.
+const CONFIG = Object.freeze({ leadEndpoint: '' });
+(() => {
+  // Busca los elementos del formulario por su id para poder actualizarlos sin recargar la página.
+  const year = document.getElementById('copyright-year');
+  year.textContent = new Date().getFullYear();
+  const form = document.getElementById('lead-form');
+  const fieldset = document.getElementById('form-fields');
+  const email = document.getElementById('email');
+  const error = document.getElementById('form-error');
+  const button = document.getElementById('submit-button');
+  const notice = document.getElementById('integration-notice');
+  const success = document.getElementById('success-panel');
+  const download = document.getElementById('download-link');
+  let pending = false;
+  let endpoint;
+  try { endpoint = new URL(CONFIG.leadEndpoint); if (endpoint.protocol !== 'https:') endpoint = null; } catch { endpoint = null; }
+  if (!endpoint) return;
+  fieldset.disabled = false;
+  notice.hidden = true;
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (pending) return;
+    error.textContent = '';
+    email.removeAttribute('aria-invalid');
+    const value = email.value.trim();
+    if (!value) { error.textContent = 'Ingresa tu correo electrónico.'; email.setAttribute('aria-invalid','true'); email.focus(); return; }
+    if (value.length > 254 || !email.validity.valid) { error.textContent = 'Ingresa un correo electrónico válido (máximo 254 caracteres).'; email.setAttribute('aria-invalid','true'); email.focus(); return; }
+    pending = true; button.disabled = true; button.textContent = 'Registrando…';
+    try {
+      const response = await fetch(endpoint.href, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email:value})});
+      if (!response.ok) throw new Error('registro');
+      const result = await response.json();
+      if (result.success !== true || typeof result.downloadUrl !== 'string') throw new Error('confirmación');
+      const url = new URL(result.downloadUrl);
+      if (url.protocol !== 'https:') throw new Error('recurso');
+      download.href = url.href;
+      form.hidden = true; success.hidden = false; success.focus();
+    } catch (e) { error.textContent = 'No pudimos completar el registro o habilitar la guía. Inténtalo de nuevo más tarde.'; }
+    finally { pending = false; button.disabled = false; button.innerHTML = 'Obtener la guía <span class="btn-arrow" aria-hidden="true">↗</span>'; }
+  });
+})();
+</script>
+</body></html>
